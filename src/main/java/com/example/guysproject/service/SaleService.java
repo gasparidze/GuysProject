@@ -42,4 +42,21 @@ public class SaleService {
     public void deleteSaleByCode(UUID code){
         repository.deleteById(code);
     }
+
+    @Transactional
+    public void updateSale(UUID code, Status status, DeliveryType deliveryType, Double realizationPrice, Partner partner){
+        Sale updatedSale = Sale.builder()
+                .status(status)
+                .deliveryType(deliveryType)
+                .realizationPrice(realizationPrice)
+                .partner(partner)
+                .build();
+
+        repository.updateByCode(updatedSale, code);
+    }
+
+    @Transactional
+    public void updateSale(UUID code, double realizationPrice){
+        repository.updateRealizationPriceByCode(code, realizationPrice);
+    }
 }
