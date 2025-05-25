@@ -11,7 +11,6 @@ public class PartnerTypeService {
     private final PartnerTypeRepository repository;
 
     public PartnerType createPartner(String name){
-        System.out.println("hello world");
         return repository.save(PartnerType.builder().name(name).build());
     }
 }
