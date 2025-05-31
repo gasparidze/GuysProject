@@ -28,4 +28,14 @@ public class ProductToMaterial {
     private Material material;
     @ManyToOne
     private Product product;
+
+    public void setMaterial(Material material) {
+        this.material = material;
+        this.material.getProductToMaterial().add(this);
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+        this.product.getProductToMaterial().add(this);
+    }
 }
